@@ -1,8 +1,6 @@
 from scenic.simulators.carla.map import setMapPath
-setMapPath(__file__, 'OpenDrive/Town01.xodr')
+setMapPath(__file__, 'Town01.xodr')
 from scenic.simulators.carla.road_model import *
 
-wiggle = (-10 deg, 10 deg)
-ego = Car with roadDeviation wiggle
-Car visible, with roadDeviation resample(wiggle)
-Car visible, with roadDeviation resample(wiggle)
+ego = Car with roadDeviation (-10 deg, 10 deg)
+Car ahead of ego offset by 0 @ (10, 15)
