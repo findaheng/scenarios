@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 import carla
+import random
 
 HOST = 'localhost'
 PORT = 2000
