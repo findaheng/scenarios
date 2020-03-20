@@ -17,6 +17,8 @@ def main():
 	map_ = world.get_map()
 	blueprint_library = world.get_blueprint_library()
 
+	print(f'Simulating map {map_.name}')
+
 	# Set to asynchronous with a fixed timestep
 	settings = world.get_settings()
 	settings.fixed_delta_seconds = 0.05
@@ -30,11 +32,16 @@ def main():
 		bp.set_attribute('color', color)
 	transform = random.choice(map_.get_spawn_points())
 	vehicle = world.spawn_actor(bp, transform)
+	vid = vehicle.id
 
 	for step in range(10):
-		print(f'\nTimestep: {step}\n')
-		snapshot = world.wait_for_tick()
-		print(snapshot)
+		world_snapshot = world.wait_for_tick()
+		print('\n', world_snapshot.timestamp)
+		print(f'Number of Actors: {len(world_snapshot)}')
+		for actor_snapshot in world_snapshot:
+			if actor_snapshot.id == vid:
+				print(actor_snapshot.get_transform())
+		print(vehicle.get_transform())  # transform received from last tick
 
 if __name__ == '__main__':
 	main()
