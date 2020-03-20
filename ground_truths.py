@@ -41,6 +41,9 @@ def main():
 		for actor_snapshot in world_snapshot:
 			if actor_snapshot.id == vid:
 				print(actor_snapshot.get_transform())
+				print(actor_snapshot.get_velocity())
+				print(actor_snapshot.get_angular_velocity())
+				print(actor_snapshot.get_acceleration())
 		print(vehicle.get_transform())  # transform received from last tick
 
 if __name__ == '__main__':
